@@ -1,0 +1,1117 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import './styles/icon-alignment.scss';
+
+/* Modern Minimal Theme Variables */
+:root {
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --secondary-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --warning-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --error-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  
+  --primary-color: #6366f1;
+  --accent-color: #8b5cf6;
+  --warn-color: #f59e0b;
+  --success-color: #10b981;
+  --info-color: #3b82f6;
+  
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Clean Light Theme */
+.light-theme {
+  --background-color: var(--slate-50);
+  --background-secondary: var(--slate-100);
+  --surface-color: #ffffff;
+  --surface-elevated: #ffffff;
+  --text-primary: var(--slate-900);
+  --text-secondary: var(--slate-600);
+  --text-tertiary: var(--slate-400);
+  --border-color: var(--slate-200);
+  --border-light: var(--slate-100);
+  --hover-color: var(--slate-100);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --nav-active-bg: var(--primary-color);
+  --nav-active-color: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --backdrop-blur: blur(12px);
+}
+
+/* Clean Dark Theme */
+.dark-theme {
+  --background-color: var(--slate-900);
+  --background-secondary: var(--slate-800);
+  --surface-color: var(--slate-800);
+  --surface-elevated: var(--slate-700);
+  --text-primary: var(--slate-100);
+  --text-secondary: var(--slate-300);
+  --text-tertiary: var(--slate-400);
+  --border-color: var(--slate-700);
+  --border-light: var(--slate-600);
+  --hover-color: var(--slate-700);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --nav-active-bg: var(--primary-color);
+  --nav-active-color: #ffffff;
+  --card-bg: rgba(30, 41, 59, 0.9);
+  --backdrop-blur: blur(12px);
+}
+
+/* Minimal Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-10px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+html, body { 
+  height: 100%; 
+  overflow-x: hidden;
+}
+
+body { 
+  margin: 0; 
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+}
+
+/* Modern Utility Classes */
+.full-width { width: 100%; }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Modern Spacing System */
+.m-0 { margin: 0; }
+.m-1 { margin: 0.25rem; }
+.m-2 { margin: 0.5rem; }
+.m-3 { margin: 0.75rem; }
+.m-4 { margin: 1rem; }
+.m-5 { margin: 1.25rem; }
+.m-6 { margin: 1.5rem; }
+.m-8 { margin: 2rem; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-5 { padding: 1.25rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+
+/* Clean Minimal Card Styles */
+.glass-card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+}
+
+.modern-card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.modern-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+}
+
+.gradient-card {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+}
+
+.stat-card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.error-text {
+  color: var(--warn-color);
+  font-size: 12px;
+}
+
+.success-text {
+  color: var(--success-color);
+  font-size: 12px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+}
+
+.chart-container {
+  position: relative;
+  height: 400px;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+  }
+  
+  .stat-card {
+    min-width: 100%;
+  }
+  
+  .chart-container {
+    height: 300px;
+  }
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+/* Custom Material Overrides */
+.mat-mdc-card {
+  margin-bottom: 16px;
+}
+
+.mat-mdc-form-field {
+  margin-bottom: 16px;
+}
+
+/* Navigation Styles */
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-link:hover {
+  background-color: var(--hover-color);
+}
+
+/* Table Styles */
+.expense-table {
+  width: 100%;
+}
+
+.expense-table th {
+  font-weight: 600;
+}
+
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.amount-positive {
+  color: var(--success-color);
+  font-weight: 500;
+}
+
+.amount-negative {
+  color: var(--warn-color);
+  font-weight: 500;
+}
+
+/* Form Styles */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+/* Dashboard Styles */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.dashboard-card {
+  padding: 16px;
+}
+
+.dashboard-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* Modern Material Component Overrides */
+
+/* Cards */
+.mat-mdc-card {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  transition: all 0.2s ease !important;
+}
+
+.mat-mdc-card:hover {
+  box-shadow: var(--shadow-lg) !important;
+  transform: translateY(-2px) !important;
+}
+
+.mat-mdc-card-header {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-card-title {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-card-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+.mat-mdc-card-content {
+  color: var(--text-primary) !important;
+}
+
+/* Toolbar and Navigation */
+.mat-toolbar {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.mat-sidenav {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+  border-right: 1px solid var(--border-color) !important;
+}
+
+.mat-sidenav-container {
+  background-color: var(--background-color) !important;
+}
+
+.mat-nav-list {
+  background-color: var(--surface-color) !important;
+}
+
+.mat-nav-list .mat-list-item {
+  color: var(--text-primary) !important;
+}
+
+.mat-nav-list .mat-list-item span {
+  color: var(--text-primary) !important;
+}
+
+.mat-nav-list .mat-list-item mat-icon {
+  color: var(--text-primary) !important;
+}
+
+.mat-list-item {
+  color: var(--text-primary) !important;
+}
+
+.mat-list-item .mdc-list-item__primary-text,
+.mat-list-item span,
+.mat-list-item .mat-list-item-content {
+  color: var(--text-primary) !important;
+}
+
+.mat-list-item mat-icon {
+  color: var(--text-primary) !important;
+}
+
+.mat-list-item:hover {
+  background-color: var(--hover-color) !important;
+}
+
+.mat-list-item:hover .mdc-list-item__primary-text,
+.mat-list-item:hover span,
+.mat-list-item:hover mat-icon {
+  color: var(--text-primary) !important;
+}
+
+.mat-list-item.mat-list-item-active,
+.mat-list-item[aria-current="page"] {
+  background-color: var(--nav-active-bg) !important;
+  color: var(--nav-active-color) !important;
+  border-radius: 8px !important;
+  margin: 4px 8px !important;
+}
+
+.mat-list-item.mat-list-item-active mat-icon,
+.mat-list-item[aria-current="page"] mat-icon {
+  color: var(--nav-active-color) !important;
+}
+
+.mat-list-item.mat-list-item-active span,
+.mat-list-item[aria-current="page"] span {
+  color: var(--nav-active-color) !important;
+  font-weight: 500 !important;
+}
+
+/* Form Fields */
+.mat-mdc-form-field {
+  .mat-mdc-text-field-wrapper {
+    background-color: var(--surface-color) !important;
+  }
+  
+  .mdc-text-field--outlined .mdc-notched-outline__leading,
+  .mdc-text-field--outlined .mdc-notched-outline__notch,
+  .mdc-text-field--outlined .mdc-notched-outline__trailing {
+    border-color: var(--border-color) !important;
+  }
+  
+  .mat-mdc-form-field-label {
+    color: var(--text-secondary) !important;
+  }
+  
+  .mat-mdc-input-element {
+    color: var(--text-primary) !important;
+  }
+}
+
+.mat-mdc-select {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-select-panel {
+  background-color: var(--surface-color) !important;
+}
+
+.mat-mdc-option {
+  color: var(--text-primary) !important;
+  background-color: var(--surface-color) !important;
+}
+
+.mat-mdc-option:hover {
+  background-color: var(--hover-color) !important;
+}
+
+/* Tables */
+.mat-mdc-table {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-header-row {
+  background-color: var(--surface-color) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.mat-mdc-header-cell {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+}
+
+.mat-mdc-row {
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.mat-mdc-row:hover {
+  background-color: var(--hover-color) !important;
+}
+
+.mat-mdc-cell {
+  color: var(--text-primary) !important;
+}
+
+/* Modern Buttons */
+.mat-mdc-button {
+  color: var(--text-primary) !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.mat-mdc-outlined-button {
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.mat-mdc-outlined-button:hover {
+  background-color: var(--hover-color) !important;
+  border-color: var(--primary-color) !important;
+  transform: translateY(-1px) !important;
+}
+
+.mat-mdc-raised-button {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+
+.mat-mdc-raised-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4) !important;
+}
+
+.mat-mdc-icon-button {
+  color: var(--text-primary) !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.mat-mdc-icon-button:hover {
+  background-color: var(--hover-color) !important;
+  transform: scale(1.05) !important;
+}
+
+.mat-mdc-fab {
+  background: var(--primary-gradient) !important;
+  color: white !important;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.mat-mdc-fab:hover {
+  transform: translateY(-2px) scale(1.05) !important;
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Chips */
+.mat-mdc-chip {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Progress Spinner */
+.mat-mdc-progress-spinner {
+  color: var(--primary-color) !important;
+}
+
+/* Paginator */
+.mat-mdc-paginator {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+  border-top: 1px solid var(--border-color) !important;
+}
+
+.mat-mdc-paginator-page-size-select {
+  color: var(--text-primary) !important;
+}
+
+/* Dialogs */
+.mat-mdc-dialog-container {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-dialog-title {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-dialog-content {
+  color: var(--text-primary) !important;
+}
+
+/* Menus */
+.mat-mdc-menu-panel {
+  background-color: var(--surface-color) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.mat-mdc-menu-item {
+  color: var(--text-primary) !important;
+}
+
+.mat-mdc-menu-item:hover {
+  background-color: var(--hover-color) !important;
+}
+
+/* Snackbar */
+.mat-mdc-snack-bar-container {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Tooltips */
+.mat-mdc-tooltip {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Date Picker */
+.mat-datepicker-popup {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.mat-calendar {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.mat-calendar-header {
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+}
+
+.mat-calendar-table-header {
+  color: var(--text-secondary) !important;
+}
+
+.mat-calendar-body-cell {
+  color: var(--text-primary) !important;
+}
+
+.mat-calendar-body-cell:hover {
+  background-color: var(--hover-color) !important;
+}
+
+/* Simplified Navigation Color Overrides */
+.mat-nav-list a[mat-list-item] {
+  color: inherit !important;
+}
+
+.mat-nav-list a[mat-list-item] span {
+  color: inherit !important;
+}
+
+.mat-nav-list a[mat-list-item] mat-icon {
+  color: inherit !important;
+}
+
+/* Ensure proper inheritance in dark theme */
+.dark-theme .mat-sidenav {
+  color: white !important;
+}
+
+.dark-theme .mat-nav-list {
+  color: white !important;
+}
+
+.dark-theme .mat-nav-list .mat-list-item {
+  color: white !important;
+}
+
+/* Ensure proper inheritance in light theme */
+.light-theme .mat-sidenav {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.light-theme .mat-nav-list {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.light-theme .mat-nav-list .mat-list-item {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* NUCLEAR OPTION - Maximum specificity navigation overrides */
+body.dark-theme .mat-sidenav-container .mat-sidenav .mat-nav-list .mat-list-item,
+body.dark-theme .mat-sidenav-container .mat-sidenav .mat-nav-list .mat-list-item span,
+body.dark-theme .mat-sidenav-container .mat-sidenav .mat-nav-list .mat-list-item mat-icon,
+body.dark-theme .mat-sidenav-container .mat-sidenav .mat-nav-list a[mat-list-item],
+body.dark-theme .mat-sidenav-container .mat-sidenav .mat-nav-list a[mat-list-item] span,
+body.dark-theme .mat-sidenav-container .mat-sidenav .mat-nav-list a[mat-list-item] mat-icon {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+body.light-theme .mat-sidenav-container .mat-sidenav .mat-nav-list .mat-list-item,
+body.light-theme .mat-sidenav-container .mat-sidenav .mat-nav-list .mat-list-item span,
+body.light-theme .mat-sidenav-container .mat-sidenav .mat-nav-list .mat-list-item mat-icon,
+body.light-theme .mat-sidenav-container .mat-sidenav .mat-nav-list a[mat-list-item],
+body.light-theme .mat-sidenav-container .mat-sidenav .mat-nav-list a[mat-list-item] span,
+body.light-theme .mat-sidenav-container .mat-sidenav .mat-nav-list a[mat-list-item] mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+  fill: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Additional overrides for any nested elements */
+.dark-theme .mat-sidenav .mat-nav-list * {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-sidenav .mat-nav-list * {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Override any Material Design internal classes */
+.dark-theme .mdc-list-item__primary-text,
+.dark-theme .mdc-list-item__secondary-text,
+.dark-theme .mat-mdc-list-item-title,
+.dark-theme .mat-mdc-list-item-line {
+  color: #ffffff !important;
+}
+
+.light-theme .mdc-list-item__primary-text,
+.light-theme .mdc-list-item__secondary-text,
+.light-theme .mat-mdc-list-item-title,
+.light-theme .mat-mdc-list-item-line {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* COMPREHENSIVE FONT VISIBILITY FIXES */
+
+/* Force all Material components to use proper theme colors */
+.dark-theme .mat-mdc-form-field-label,
+.dark-theme .mat-mdc-form-field-hint,
+.dark-theme .mat-mdc-form-field-error,
+.dark-theme .mat-mdc-input-element,
+.dark-theme .mat-mdc-select-value,
+.dark-theme .mat-mdc-select-arrow,
+.dark-theme .mat-mdc-option-text,
+.dark-theme .mat-mdc-tab-label,
+.dark-theme .mat-mdc-tab-header,
+.dark-theme .mat-mdc-card-title,
+.dark-theme .mat-mdc-card-subtitle,
+.dark-theme .mat-mdc-card-content,
+.dark-theme .mat-mdc-button,
+.dark-theme .mat-mdc-outlined-button,
+.dark-theme .mat-mdc-text-button,
+.dark-theme .mat-mdc-icon-button,
+.dark-theme .mat-toolbar,
+.dark-theme .mat-toolbar-row,
+.dark-theme .mat-toolbar-single-row {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-mdc-form-field-label,
+.light-theme .mat-mdc-form-field-hint,
+.light-theme .mat-mdc-form-field-error,
+.light-theme .mat-mdc-input-element,
+.light-theme .mat-mdc-select-value,
+.light-theme .mat-mdc-select-arrow,
+.light-theme .mat-mdc-option-text,
+.light-theme .mat-mdc-tab-label,
+.light-theme .mat-mdc-tab-header,
+.light-theme .mat-mdc-card-title,
+.light-theme .mat-mdc-card-subtitle,
+.light-theme .mat-mdc-card-content,
+.light-theme .mat-mdc-button,
+.light-theme .mat-mdc-outlined-button,
+.light-theme .mat-mdc-text-button,
+.light-theme .mat-mdc-icon-button,
+.light-theme .mat-toolbar,
+.light-theme .mat-toolbar-row,
+.light-theme .mat-toolbar-single-row {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Tab content and labels */
+.dark-theme .mat-mdc-tab-group .mat-mdc-tab-label,
+.dark-theme .mat-mdc-tab-group .mat-mdc-tab-label-content,
+.dark-theme .mat-mdc-tab-body-content {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-mdc-tab-group .mat-mdc-tab-label,
+.light-theme .mat-mdc-tab-group .mat-mdc-tab-label-content,
+.light-theme .mat-mdc-tab-body-content {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Form field placeholders and hints */
+.dark-theme .mat-mdc-form-field .mat-mdc-input-element::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.light-theme .mat-mdc-form-field .mat-mdc-input-element::placeholder {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Select dropdown options */
+.dark-theme .mat-mdc-select-panel .mat-mdc-option {
+  color: #ffffff !important;
+  background-color: var(--surface-color) !important;
+}
+
+.light-theme .mat-mdc-select-panel .mat-mdc-option {
+  color: rgba(0, 0, 0, 0.87) !important;
+  background-color: var(--surface-color) !important;
+}
+
+/* Error messages */
+.dark-theme .mat-mdc-form-field-error {
+  color: #ff6b6b !important;
+}
+
+.light-theme .mat-mdc-form-field-error {
+  color: #d32f2f !important;
+}
+
+/* Checkbox and radio button labels */
+.dark-theme .mat-mdc-checkbox .mdc-form-field,
+.dark-theme .mat-mdc-radio-button .mdc-form-field {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-mdc-checkbox .mdc-form-field,
+.light-theme .mat-mdc-radio-button .mdc-form-field {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Chip text */
+.dark-theme .mat-mdc-chip .mdc-evolution-chip__text-label {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-mdc-chip .mdc-evolution-chip__text-label {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* General text elements */
+.dark-theme h1, .dark-theme h2, .dark-theme h3, .dark-theme h4, .dark-theme h5, .dark-theme h6,
+.dark-theme p, .dark-theme span, .dark-theme div, .dark-theme label {
+  color: #ffffff !important;
+}
+
+.light-theme h1, .light-theme h2, .light-theme h3, .light-theme h4, .light-theme h5, .light-theme h6,
+.light-theme p, .light-theme span, .light-theme div, .light-theme label {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Override any remaining stubborn elements */
+.dark-theme * {
+  color: #ffffff;
+}
+
+.light-theme * {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+/* But preserve specific colored elements */
+.dark-theme .mat-primary,
+.dark-theme .mat-accent,
+.dark-theme .mat-warn,
+.dark-theme .success-text,
+.dark-theme .error-text,
+.dark-theme .amount-positive,
+.dark-theme .amount-negative {
+  color: inherit !important;
+}
+
+.light-theme .mat-primary,
+.light-theme .mat-accent,
+.light-theme .mat-warn,
+.light-theme .success-text,
+.light-theme .error-text,
+.light-theme .amount-positive,
+.light-theme .amount-negative {
+  color: inherit !important;
+}
+
+/* COMPREHENSIVE ICON COLOR FIXES */
+
+/* Material Icons - Dark Theme */
+.dark-theme .mat-icon,
+.dark-theme mat-icon,
+.dark-theme .material-icons,
+.dark-theme .mat-mdc-button mat-icon,
+.dark-theme .mat-mdc-icon-button mat-icon,
+.dark-theme .mat-mdc-outlined-button mat-icon,
+.dark-theme .mat-mdc-raised-button mat-icon,
+.dark-theme .mat-mdc-fab mat-icon,
+.dark-theme .mat-mdc-mini-fab mat-icon,
+.dark-theme .mat-mdc-form-field mat-icon,
+.dark-theme .mat-mdc-select mat-icon,
+.dark-theme .mat-mdc-input mat-icon,
+.dark-theme .mat-mdc-card mat-icon,
+.dark-theme .mat-toolbar mat-icon,
+.dark-theme .mat-mdc-tab mat-icon,
+.dark-theme .mat-mdc-chip mat-icon,
+.dark-theme .mat-mdc-list-item mat-icon,
+.dark-theme .mat-nav-list mat-icon,
+.dark-theme .mat-mdc-menu-item mat-icon,
+.dark-theme .mat-mdc-table mat-icon,
+.dark-theme .mat-mdc-header-cell mat-icon,
+.dark-theme .mat-mdc-cell mat-icon {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* Material Icons - Light Theme */
+.light-theme .mat-icon,
+.light-theme mat-icon,
+.light-theme .material-icons,
+.light-theme .mat-mdc-button mat-icon,
+.light-theme .mat-mdc-icon-button mat-icon,
+.light-theme .mat-mdc-outlined-button mat-icon,
+.light-theme .mat-mdc-raised-button mat-icon,
+.light-theme .mat-mdc-fab mat-icon,
+.light-theme .mat-mdc-mini-fab mat-icon,
+.light-theme .mat-mdc-form-field mat-icon,
+.light-theme .mat-mdc-select mat-icon,
+.light-theme .mat-mdc-input mat-icon,
+.light-theme .mat-mdc-card mat-icon,
+.light-theme .mat-toolbar mat-icon,
+.light-theme .mat-mdc-tab mat-icon,
+.light-theme .mat-mdc-chip mat-icon,
+.light-theme .mat-mdc-list-item mat-icon,
+.light-theme .mat-nav-list mat-icon,
+.light-theme .mat-mdc-menu-item mat-icon,
+.light-theme .mat-mdc-table mat-icon,
+.light-theme .mat-mdc-header-cell mat-icon,
+.light-theme .mat-mdc-cell mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+  fill: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Form field suffix and prefix icons */
+.dark-theme .mat-mdc-form-field-icon-suffix mat-icon,
+.dark-theme .mat-mdc-form-field-icon-prefix mat-icon,
+.dark-theme .mat-mdc-form-field-suffix mat-icon,
+.dark-theme .mat-mdc-form-field-prefix mat-icon {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-mdc-form-field-icon-suffix mat-icon,
+.light-theme .mat-mdc-form-field-icon-prefix mat-icon,
+.light-theme .mat-mdc-form-field-suffix mat-icon,
+.light-theme .mat-mdc-form-field-prefix mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Button icons with specific states */
+.dark-theme .mat-mdc-button:not([disabled]) mat-icon,
+.dark-theme .mat-mdc-outlined-button:not([disabled]) mat-icon,
+.dark-theme .mat-mdc-text-button:not([disabled]) mat-icon,
+.dark-theme .mat-mdc-icon-button:not([disabled]) mat-icon {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-mdc-button:not([disabled]) mat-icon,
+.light-theme .mat-mdc-outlined-button:not([disabled]) mat-icon,
+.light-theme .mat-mdc-text-button:not([disabled]) mat-icon,
+.light-theme .mat-mdc-icon-button:not([disabled]) mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Primary, accent, and warn button icons - preserve their colors */
+.mat-mdc-button.mat-primary mat-icon,
+.mat-mdc-button.mat-accent mat-icon,
+.mat-mdc-button.mat-warn mat-icon,
+.mat-mdc-raised-button.mat-primary mat-icon,
+.mat-mdc-raised-button.mat-accent mat-icon,
+.mat-mdc-raised-button.mat-warn mat-icon,
+.mat-mdc-fab.mat-primary mat-icon,
+.mat-mdc-fab.mat-accent mat-icon,
+.mat-mdc-fab.mat-warn mat-icon {
+  color: white !important;
+}
+
+/* Navigation icons - specific overrides */
+.dark-theme .mat-sidenav .mat-nav-list .mat-list-item mat-icon,
+.dark-theme .mat-sidenav .mat-nav-list a[mat-list-item] mat-icon {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+.light-theme .mat-sidenav .mat-nav-list .mat-list-item mat-icon,
+.light-theme .mat-sidenav .mat-nav-list a[mat-list-item] mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+  fill: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Active navigation icons */
+.mat-list-item.mat-list-item-active mat-icon,
+.mat-list-item[aria-current="page"] mat-icon {
+  color: white !important;
+  fill: white !important;
+}
+
+/* Table action icons */
+.dark-theme .mat-mdc-table .mat-mdc-icon-button mat-icon {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-mdc-table .mat-mdc-icon-button mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Menu trigger icons */
+.dark-theme .mat-mdc-menu-trigger mat-icon,
+.dark-theme [mat-menu-trigger] mat-icon {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-mdc-menu-trigger mat-icon,
+.light-theme [mat-menu-trigger] mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Progress spinner and loading icons */
+.dark-theme .mat-mdc-progress-spinner,
+.dark-theme .mat-progress-spinner {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-mdc-progress-spinner,
+.light-theme .mat-progress-spinner {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Expansion panel icons */
+.dark-theme .mat-expansion-panel-header mat-icon {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-expansion-panel-header mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Stepper icons */
+.dark-theme .mat-step-header mat-icon {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-step-header mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Datepicker icons */
+.dark-theme .mat-datepicker-toggle mat-icon,
+.dark-theme .mat-datepicker-content mat-icon {
+  color: #ffffff !important;
+}
+
+.light-theme .mat-datepicker-toggle mat-icon,
+.light-theme .mat-datepicker-content mat-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Nuclear option for any remaining icons */
+.dark-theme svg,
+.dark-theme .mat-icon svg {
+  fill: #ffffff !important;
+}
+
+.light-theme svg,
+.light-theme .mat-icon svg {
+  fill: rgba(0, 0, 0, 0.87) !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  box-shadow: var(--shadow);
+}
