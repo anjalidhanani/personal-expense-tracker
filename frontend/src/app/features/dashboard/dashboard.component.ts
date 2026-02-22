@@ -155,29 +155,22 @@ Chart.register(...registerables);
           </div>
           
           <div class="expenses-list">
-            <div class="expense-item">
-              <div class="expense-icon entertainment">
-                <mat-icon>restaurant</mat-icon>
-              </div>
-              <div class="expense-details">
-                <h3>Pizza</h3>
-                <p class="expense-meta">Entertainment • Feb 4</p>
-              </div>
-              <div class="expense-amount">
-                <span class="amount">₹2,000.00</span>
-              </div>
+            <div class="empty-state" *ngIf="!recentExpenses || recentExpenses.length === 0">
+              <mat-icon>receipt_long</mat-icon>
+              <p>No recent expenses</p>
+              <p class="empty-subtitle">Start by adding your first expense</p>
             </div>
             
-            <div class="expense-item">
-              <div class="expense-icon shopping">
-                <mat-icon>shopping_bag</mat-icon>
+            <div class="expense-item" *ngFor="let expense of recentExpenses">
+              <div class="expense-icon" [ngClass]="getCategoryClass(expense.categoryId)">
+                <mat-icon>{{ getCategoryIcon(expense.categoryId) }}</mat-icon>
               </div>
               <div class="expense-details">
-                <h3>Hard Drive</h3>
-                <p class="expense-meta">Shopping • Feb 3</p>
+                <h3>{{ expense.description }}</h3>
+                <p class="expense-meta">{{ getCategoryName(expense.categoryId) }} • {{ formatDate(expense.date) }}</p>
               </div>
               <div class="expense-amount">
-                <span class="amount">₹100.00</span>
+                <span class="amount">{{ formatCurrency(expense.amount) }}</span>
               </div>
             </div>
           </div>
@@ -533,6 +526,21 @@ Chart.register(...registerables);
     .expense-icon.shopping {
       background: linear-gradient(135deg, #00ffff 0%, #0080ff 100%);
       box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+
+    .expense-icon.transport {
+      background: linear-gradient(135deg, #ff8000 0%, #ffb347 100%);
+      box-shadow: 0 0 15px rgba(255, 128, 0, 0.3);
+    }
+
+    .expense-icon.health {
+      background: linear-gradient(135deg, #00ff80 0%, #40ff80 100%);
+      box-shadow: 0 0 15px rgba(0, 255, 128, 0.3);
+    }
+
+    .expense-icon.default {
+      background: linear-gradient(135deg, #8080ff 0%, #a0a0ff 100%);
+      box-shadow: 0 0 15px rgba(128, 128, 255, 0.3);
     }
 
     .expense-details {
@@ -1087,5 +1095,24 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 
   hasCategoryBreakdown(): boolean {
     return !!(this.stats?.categoryBreakdown && this.stats.categoryBreakdown.length > 0);
+  }
+
+  getCategoryClass(categoryId: string | Category): string {
+    const categoryName = this.getCategoryName(categoryId).toLowerCase();
+    
+    // Map category names to CSS classes
+    if (categoryName.includes('food') || categoryName.includes('restaurant') || categoryName.includes('dining')) {
+      return 'entertainment';
+    } else if (categoryName.includes('shopping') || categoryName.includes('retail') || categoryName.includes('store')) {
+      return 'shopping';
+    } else if (categoryName.includes('transport') || categoryName.includes('travel') || categoryName.includes('fuel')) {
+      return 'transport';
+    } else if (categoryName.includes('health') || categoryName.includes('medical')) {
+      return 'health';
+    } else if (categoryName.includes('entertainment') || categoryName.includes('movie') || categoryName.includes('game')) {
+      return 'entertainment';
+    } else {
+      return 'default';
+    }
   }
 }
